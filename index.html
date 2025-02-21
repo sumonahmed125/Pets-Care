@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browse-Pets</title>
+    <!--google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--  DaisyUi -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+              primary: "#111111",
+              secondary: "#FFF9F4",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .sora-font {
+        font-family: "Sora", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .adlam-font {
+        font-family: "ADLaM Display", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      .text-light {
+        color: rgba(17, 17, 17, 0.7);
+      }
+      .anime-left {
+        position: relative;
+        animation-name: change-left;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes change-left {
+        0% {
+          margin-left: 0px;
+        }
+        50% {
+          margin-left: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body class="sora-font">
+    <header>
+      <nav>
+        <div
+          class="navbar flex justify-between bg-[#FFF9F4] border-b border-b-stone-400 lg:border-none lg:px-[140px] lg:py-4"
+        >
+          <!-- lg-navbar -->
+
+          <div class="navbar-start hidden lg:flex gap-2 items-center">
+            <img src="./images/logo-header.png" alt="logo-header" />
+            <h3 class="text-2xl font-normal">
+              Browse<span class="text-[#FFDC26]">4</span>Pets
+            </h3>
+          </div>
+          <div class="navbar-center hidden lg:flex">
+            <ul
+              class="menu menu-horizontal px-1 text-xl lg:flex font-normal gap-[2rem]"
+            >
+              <li><a href="#">Find a pet</a></li>
+              <li><a href="#">Breeds</a></li>
+              <li><a href="#">Contact us</a></li>
+            </ul>
+          </div>
+          <div class="navbar-end hidden lg:flex gap-4 font-light">
+            <i class="fa-regular fa-bell text-2xl"></i>
+            <i class="fa-solid fa-magnifying-glass text-2xl"></i>
+            <button
+              class="border border-[#FFDC26] font-normal rounded-lg py-2.5 px-7 hover:bg-[#FFDC26] hover:border-none hover:text-black"
+            >
+              Login
+            </button>
+            <button
+              class="bg-[#FFDC26] font-normal rounded-lg py-2.5 px-7 border hover:border-[#FFDC26] hover:bg-transparent"
+            >
+              Register
+            </button>
+          </div>
+
+          <!-- responsive navbar -->
+          <div class="flex lg:hidden justify-between w-full px-4 py-3">
+            <img src="./images/logo-header.png" alt="" class="w-[48px]" />
+            <i class="fa-solid fa-bars text-[30px]"></i>
+          </div>
+        </div>
+      </nav>
+      <!-- banner -->
+      <div
+        class="banner w-[90%] lg:mt-[76px] mt-8 lg:w-[1320px] lg:h-[749px] h-full mx-auto lg:px-10 text-[#111111] lg:bg-[url('./images/cat-big.png')] bg-cover"
+      >
+        <div class="w-full">
+          <h3
+            class="anime-left adlam-font lg:text-[56px] text-[25px] lg:w-[681px] w-[280px]"
+          >
+            Pamper Your Pet, Because They Deserve the Bes
+          </h3>
+          <p
+            class="lg:text-xl text-sm opacity-[80%] lg:my-4 my-2 lg:w-[672px] w-[310px] z-10 relative animate-pulse"
+          >
+            Discover a world of treats, toys, and essentials handpicked for your
+            furry friends. Shop now and make tails wag with joy!
+          </p>
+          <button
+            class="bg-[#FFDC26] font-normal rounded-lg py-2.5 lg:mt-4 mt-2 px-7 border hover:border-[#FFDC26] hover:bg-transparent text-4 z-10 relative"
+          >
+            Find a pet
+          </button>
+        </div>
+        <img
+          src="./images/cat-big.png"
+          alt="cat-big"
+          class="lg:hidden relative mt-[-100px]"
+        />
+      </div>
+    </header>
+    <main>
+      <!-- categories -->
+      <section
+        class="lg:mt-[130px] mt-[56px] w-[90%] mx-auto lg:px-[140px] lg:w-full"
+      >
+        <h3
+          class="text-primary adlam-font lg:text-4xl text-2xl lg:mb-[48px] mb-[32px]"
+        >
+          Browse By Categories
+        </h3>
+        <div
+          class="cards grid lg:grid-cols-6 grid-cols-2 text-[#000000] lg:gap-6 gap-2.5"
+        >
+          <div
+            class="card bg-[#F9DF8A] rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[28px] p-[24px] flex justify-center items-center rounded-full"
+            >
+              <img
+                src="./images/dog-cartoon.png"
+                alt=""
+                class="lg:w-[48px] lg:h-[48px] w-[40px]"
+              />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Dog
+            </h3>
+            <p class="lg:text-4 text-sm mt-3">3 items</p>
+          </div>
+          <div
+            class="card bg-[#F9DF8A] rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[28px] p-[24px] flex justify-center items-center rounded-full"
+            >
+              <img
+                src="./images/fish-cartoon.png"
+                alt=""
+                class="w-[48px] h-[48px]"
+              />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Fish
+            </h3>
+            <p class="lg:text-4 text-sm mt-3">3 items</p>
+          </div>
+          <div
+            class="card bg-[#F9DF8A] rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[28px] p-[24px] flex justify-center items-center rounded-full"
+            >
+              <img
+                src="./images/cat-cartoon.png"
+                alt=""
+                class="w-[48px] h-[48px]"
+              />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Cat
+            </h3>
+            <p class="lg:text-4 text-sm mt-3">3 items</p>
+          </div>
+          <div
+            class="card bg-[#F9DF8A] rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[28px] p-[24px] flex justify-center items-center rounded-full"
+            >
+              <img
+                src="./images/bird-cartoon.png"
+                alt=""
+                class="w-[48px] h-[48px]"
+              />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Birds
+            </h3>
+            <p class="lg:text-4 text-sm mt-3">3 items</p>
+          </div>
+          <div
+            class="card bg-[#F9DF8A] rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[28px] p-[24px] flex justify-center items-center rounded-full"
+            >
+              <img
+                src="./images/mouse-cartoon.png"
+                alt=""
+                class="w-[48px] h-[48px]"
+              />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Small pet
+            </h3>
+            <p class="lg:text-4 text-sm mt-3">3 items</p>
+          </div>
+          <div
+            class="card bg-[#F9DF8A] rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[28px] p-[24px] flex justify-center items-center rounded-full"
+            >
+              <img
+                src="./images/rabbit-cartoon.png"
+                alt=""
+                class="w-[48px] h-[48px]"
+              />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Rabbit
+            </h3>
+            <p class="lg:text-4 text-sm mt-3">2 items</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trending Products -->
+      <section
+        class="lg:mt-[130px] mt-[56px] w-full lg:bg-secondary lg:p-[140px] p-4"
+      >
+        <div class="mx-auto w-[90%] lg:w-full">
+          <h3
+            class="text-primary adlam-font lg:text-4xl text-2xl lg:mb-[48px] mb-[32px]"
+          >
+            Trending Pet Products
+          </h3>
+          <div class="cards flex gap-6 lg:flex-row flex-col">
+            <div
+              class="card-1 bg-[#F9DF8A] lg:rounded-xl rounded-lg lg:px-[32px] px-4 relative lg:w-[424px] w-full mx-auto"
+            >
+              <h3
+                class="adlam-font lg:text-3xl text-2xl text-[#000000] mt-[51px]"
+              >
+                T- Shirt For Dogs
+              </h3>
+              <p
+                class="lg:w-[334px] w-[281px] lg:text-base text-sm text-light mt-6"
+              >
+                Discover a world of treats, toys, and essentials handpicked for
+              </p>
+              <div class="flex">
+                <button
+                  class="btn lg:text-xl text-4 bg-white font-normal hover:bg-black hover:text-white rounded-lg mt-6"
+                >
+                  Shop Now
+                </button>
+                <img
+                  src="./images/cute-pet-small.png"
+                  alt=""
+                  class="lg:mt-[-70px] mt-[-40px] w-[150px] ml-[-20px] lg:w-[300px] lg:ml-0"
+                />
+              </div>
+            </div>
+            <div
+              class="pet-info grid lg:grid-cols-3 grid-cols-2 lg:gap-5 gap-3.5"
+            >
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)]"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/dog-cartoon.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)]"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/fish-cartoon.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)]"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/bird-cartoon.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)]"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/rabbit-cartoon.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)]"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/bird-cartoon.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)]"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/pet-couch.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)]"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/fish-cartoon.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)]"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/pet-couch.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-xl py-4 pl-4 lg:pr-20 bg-white lg:h-[118px] border border-[rgba(17, 17, 17, 0.1)] hidden lg:block"
+              >
+                <div class="card flex flex-row gap-4">
+                  <div
+                    class="card-img w-[86px] bg-secondary flex justify-center items-center rounded-xl"
+                  >
+                    <img
+                      src="images/rabbit-cartoon.png"
+                      alt=""
+                      class="lg:w-[48px] w-[29px]"
+                    />
+                  </div>
+                  <div>
+                    <i
+                      class="fa-solid fa-star text-[#FFC107] lg:text-base text-[10px]"
+                    ></i>
+                    <span class="lg:text-base text-[10px] text-primary ml-1"
+                      >4.5</span
+                    >
+                    <h3 class="lg:text-xl text-sm w-[78px] font-medium my-0.5">
+                      Pet Bed
+                    </h3>
+                    <p class="lg:text-base text-[10px] font-medium">$39.99</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- services -->
+      <section
+        class="lg:mt-[130px] mt-[56px] w-[90%] mx-auto lg:px-[140px] lg:w-full"
+      >
+        <h3
+          class="text-primary adlam-font lg:text-4xl text-2xl lg:mb-[48px] mb-[32px]"
+        >
+          Discover Our Services
+        </h3>
+        <div
+          class="cards grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-[#000000] lg:gap-6 gap-2.5 w-[90%] mx-auto"
+        >
+          <div
+            class="card bg-[#F9DF8A] rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[20px] p-[20px] flex justify-center items-center rounded-full"
+            >
+              <img src="./images/training.png" alt="" class="w-[40px]" />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Pet Training Programs
+            </h3>
+            <p
+              class="text-xs lg:text-sm text-light lg:w-[330px] w-[260px] lg:mt-3 mt-1 text-center"
+            >
+              our training programs focus on obedience, socialization, and fun!
+              Create a strong bond with your pet through expert guidance.
+            </p>
+            <button
+              class="bg-white font-normal rounded-lg py-2.5 lg:mt-4 mt-2 lg:px-7 px-3 border hover:text-white hover:bg-black lg:text-base text-xs"
+            >
+              Book a Service
+            </button>
+          </div>
+          <div
+            class="card bg-red-200 rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[20px] p-[20px] flex justify-center items-center rounded-full"
+            >
+              <img src="./images/delivery.png" alt="" class="w-[40px]" />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Delivery of Pet Products
+            </h3>
+            <p
+              class="text-xs lg:text-sm text-light lg:w-[330px] w-[260px] lg:mt-3 mt-1 text-center"
+            >
+              Shop your favorite pet products.From food to toys, we ensure
+              quality products and hassle-free delivery.
+            </p>
+            <button
+              class="bg-white font-normal rounded-lg py-2.5 lg:mt-4 mt-2 lg:px-7 px-3 border hover:text-white hover:bg-black lg:text-base text-xs"
+            >
+              Book a Service
+            </button>
+          </div>
+          <div
+            class="card bg-[#F9DF8A] rounded-xl flex justify-center items-center lg:py-[34px] py-[29px]"
+          >
+            <div
+              class="card-img mx-auto bg-white lg:p-[20px] p-[20px] flex justify-center items-center rounded-full"
+            >
+              <img src="./images/gouming.png" alt="" class="w-[40px]" />
+            </div>
+            <h3 class="lg:mt-[24px] mt-[20px] adlam-font lg:text-xl text-lg">
+              Grooming and Care Services
+            </h3>
+            <p
+              class="text-xs lg:text-sm text-light lg:w-[330px] w-[260px] lg:mt-3 mt-1 text-center"
+            >
+              Pamper your pet with our grooming services, including bathing,
+              nail trimming, and fur styling.
+            </p>
+            <button
+              class="bg-white font-normal rounded-lg py-2.5 lg:mt-4 mt-2 lg:px-7 px-3 border hover:text-white hover:bg-black lg:text-base text-xs"
+            >
+              Book a Service
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- price section -->
+      <section
+        class="lg:p-[140px] lg:pb-0 lg:mb-[-100px] mb-[-180px] p-4 w-[90%] mx-auto lg:w-full"
+      >
+        <h3
+          class="text-primary adlam-font lg:text-4xl text-2xl lg:mb-[48px] mb-[32px]"
+        >
+          Everyday low Price
+        </h3>
+        <div class="cards flex lg:flex-row flex-col gap-6 w-full">
+          <div
+            class="card-price-1 flex lg:w-[784px] w-full rounded-xl bg-gradient-to-l from-[#ACD2FD] to-[#F8CCFB] lg:h-[480px]"
+          >
+            <div
+              class="price-info lg:py-[136px] py-[38px] lg:pl-[88px] pl-[34px] text-[#000000]"
+            >
+              <p class="lg:text-xl lg:block hidden">Under Price</p>
+              <h3
+                class="adlam-font lg:text-3xl text-xl lg:w-[286px] w-[199px] mt-3"
+              >
+                Pet Grooming Mitt
+              </h3>
+              <p
+                class="adlam-font lg:text-2xl lg:w-[230px] text-white mt-1 lg:block hidden"
+              >
+                (Easy Hair Removal)
+              </p>
+              <h2
+                class="adlam-font lg:text-6xl text-[39px] lg:mt-4 text-white lg:text-[#000000]"
+              >
+                $7.99
+              </h2>
+            </div>
+            <img
+              src="images/cute-dog-mid.png"
+              alt=""
+              class="lg:ml-[-40px] w-[150px] lg:w-[400px] lg:h-[500px] ml-[-100px] mt-20 lg:mt-[-6px]"
+            />
+          </div>
+          <div
+            class="card-price-2 flex lg:w-[512px] w-full bg-gradient-to-l from-[#F9DF8A] to-[#FFF9F4] rounded-xl lg:h-[480px]"
+          >
+            <div
+              class="price-info lg:py-[55px] py-[38px] lg:pl-[50px] pl-[34px] text-[#000000]"
+            >
+              <h3 class="adlam-font lg:text-3xl text-xl lg:w-[243px] w-[170px]">
+                T-Shirt for Dogs
+              </h3>
+              <h2
+                class="text-[#FFDC26] adlam-font lg:text-6xl text-[39px] lg:mt-4"
+              >
+                $7.99
+              </h2>
+            </div>
+            <img
+              src="images/cute-pet-mid.png"
+              alt=""
+              class="ml-[-90px] w-[250px] h-[350px] mt-[90px] hidden lg:block"
+            />
+            <img
+              src="images/cute-pet-small.png"
+              alt=""
+              class="w-[150px] ml-[-80px] mt-4 lg:hidden block"
+            />
+          </div>
+        </div>
+        <!--  -->
+      </section>
+      <!-- subscribe -->
+      <section
+        class="lg:w-[1320px] w-[90%] mx-auto bg-secondary relative lg:rounded-2xl rounded-lg top-60 z-10 flex lg:flex-row flex-col justify-center lg:py-[38px] py-[32px] lg:px-[89px] lg:gap-[117px]"
+      >
+        <img
+          src="images/cute-pet-mid.png"
+          alt=""
+          class="lg:w-[330px] w-[190px] lg:h-[415px] h-[238px] mx-auto"
+        />
+        <div
+          class="subscribe-info lg:pt-[77px] lg:pb-[134px] text-primary w-full mx-auto lg:text-left text-center"
+        >
+          <h3
+            class="lg:text-3xl text-xl adlam-font w-[214px] lg:w-[350px] text-center lg:mx-0 mx-auto lg:text-left"
+          >
+            Get Pawsome News!
+          </h3>
+          <p
+            class="lg:text-xl text-sm mt-4 w-[293px] lg:w-[536px] lg:mx-0 mx-auto text-center lg:text-left"
+          >
+            Exclusive training tips, ticks, product deals and more.
+          </p>
+          <input
+            type="email"
+            placeholder="Enter email...."
+            class="mt-6 lg:w-[472px] w-[265px] rounded-md py-5 lg:pl-5 pl-3 lg:text-base text-sm"
+          />
+          <br />
+          <button
+            type="submit"
+            class="mt-6 bg-[#FFDC26] lg:text-base text-sm rounded-md px-[30px] py-[10px] hover:border hover:border-[#FFDC26] hover:bg-transparent"
+          >
+            Subscribe
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-yellow-200 lg:pt-[366px] pt-[365px] lg:pb-[140px] w-full">
+      <div
+        class="footer lg:w-[1320px] w-[90%] mx-auto flex lg:flex-row flex-col gap-[36px]"
+      >
+        <div class="footer-info">
+          <div class="logo-site flex justify-center items-center gap-2">
+            <img
+              src="images/logo-footer.png"
+              alt="footer-logo"
+              class="lg:w-[48px] w-[35px]"
+            />
+            <h3 class="lg:text-2xl text-xl font-normal">
+              Browse<span class="text-[#FFDC26]">4</span>Pets
+            </h3>
+          </div>
+          <p
+            class="description lg:w-[426px] w-[354px] lg:text-xl text-sm text-light"
+          >
+            Discover a world of treats, toys, and <br />essentials handpicked
+            for your furry friends
+          </p>
+        </div>
+        <div
+          class="links lg:text-xl text-base lg:ml-[158px] lg:mr-[300px] flex flex-col lg:gap-7 gap-5"
+        >
+          <p>Find a pet</p>
+          <p>Breeds</p>
+          <p>Contact us</p>
+        </div>
+        <div class="social-links lg:mt-20 pb-[56px]">
+          <p class="text-base font-medium text-primary">Follow Us</p>
+          <div class="social">
+            <i class="fa-brands fa-facebook w-[25px]"></i>
+            <i class="fa-brands fa-instagram w-[25px]"></i>
+            <i class="fa-brands fa-linkedin w-[25px]"></i>
+            <i class="fa-brands fa-youtube w-[25px]"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
